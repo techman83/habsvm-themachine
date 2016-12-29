@@ -8,6 +8,12 @@ Install + Running
 =================
 Eg Virtualenv
 
+Scipy requires some extra dependencies to be installed via pip
+```
+sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev
+```
+
+Install
 ```
 git clone https://github.com/techman83/habsvm-themachine.git themachine
 cd ~/themachine
