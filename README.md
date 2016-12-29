@@ -9,12 +9,15 @@ Install + Running
 Eg Virtualenv
 
 ```
+mkdir ~/themachine
+cd ~/themachine
 virtualenv -p /usr/bin/python3 venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ```
-python themachine.py mqttserver ~/themachine
+python themachine.py mqttserver ~/themachine/learn
 ```
 NOTE: The path must exist and be writeable
 
