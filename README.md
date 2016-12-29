@@ -41,9 +41,14 @@ User=username
 WorkingDirectory=/home/username/themachine
 ExecStart=/home/username/themachine/venv/bin/python themachine.py hostname /home/username/themachine/learn
 Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
 ```
 
+Enable in systemd
 ```
+sudo systemctl daemon-reload
 sudo systemctl enable themachine.service
 sudo systemctl start themachine.service
 ```
