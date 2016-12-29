@@ -91,7 +91,7 @@ def change(payload,client):
         return
     
     for pkl in list(Path(loc_path).glob('*.pkl')):
-        classifier = joblib.load(pkl.name)
+        classifier = joblib.load(pkl)
         decide = classifier.decision_function([[ inTemp, outTemp ]])[0] * 100
 
         if (decide > 95):
