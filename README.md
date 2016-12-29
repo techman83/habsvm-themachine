@@ -9,7 +9,7 @@ Install + Running
 Eg Virtualenv
 
 ```
-mkdir ~/themachine
+git clone https://github.com/techman83/habsvm-themachine.git themachine
 cd ~/themachine
 virtualenv -p /usr/bin/python3 venv
 source venv/bin/activate
