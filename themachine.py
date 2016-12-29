@@ -48,13 +48,16 @@ def learn(payload):
     logging.info("Learn: {}".format(payload))
 
     loc_path = basepath.joinpath(location)
-    loc_path.mkdir(exist_ok=True)
+    if not (loc_path.is_dir()):
+        loc_path.mkdir()
     train_file = loc_path.joinpath(item + ".csv")
     pkl_file = loc_path.joinpath(item + ".pkl")
 
     if not train_file.is_file():
-        data = "state,inTemp,inHum,outTemp,outHum"
-        train_file.write_text(data)
+        with open(str(train_file), 'w') as output:
+            data = "state,inTemp,inHum,outTemp,outHum"
+            output.write(data)
+            output.close()
     
     df = pd.read_csv(train_file)
     state_num = 1 if state == "ON" else 0
