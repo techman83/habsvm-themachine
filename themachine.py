@@ -88,7 +88,7 @@ def change(payload,client):
         logging.error("Incorrect change payload: {}".format(payload))
         return
     
-    logging.info("Change: {}".format(payload))
+    logging.debug("Change: {}".format(payload))
     loc_path = basepath.joinpath(location)
     if not (loc_path.is_dir()):
         return
@@ -99,11 +99,11 @@ def change(payload,client):
 
         if (decide > 95):
             client.publish("/themachine/{}/{}".format(location,pkl.stem), "ON")
-            logging.info("I'm {0:.2f}% sure you wanted the {1} on".format(decide,pkl.stem))
+            logging.info("I'm {0:.2f}% sure you wanted the {1} on. {2}".format(decide,pkl.stem,payload))
 
         if (decide < -95):
             client.publish("/themachine/{}/{}".format(location,pkl.stem), "OFF")
-            logging.info("I'm {0:.2f}% sure you wanted the {1} off".format(decide * -1,pkl.stem))
+            logging.info("I'm {0:.2f}% sure you wanted the {1} off. {2}".format(decide * -1,pkl.stem,payload))
 
 
 def on_connect(client, userdata, flags, rc):
